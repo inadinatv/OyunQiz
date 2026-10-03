@@ -1,0 +1,13 @@
+{
+  "name": "inadina-tv-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check api/_quiz.js && node --check api/question.js && node --check api/health.js",
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
