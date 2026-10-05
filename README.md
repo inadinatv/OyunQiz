@@ -2,13 +2,14 @@
 
 İnadına TV markalı, tekrar etmeyen sorulara sahip Türkçe AI quiz oyunu.
 
-## Vercel kurulumu
+## GitHub Pages bağlantısı
 
-1. Bu GitHub deposunu Vercel'e import edin.
-2. Framework Preset: **Other** bırakın.
-3. Build Command: boş bırakın.
-4. Output Directory: boş bırakın.
-5. İsteğe bağlı AI üretimi için Vercel Project Settings > Environment Variables bölümüne `MANUS_API_URL` ve `MANUS_API_KEY` ekleyin.
-6. Deploy edin.
+GitHub Pages sürümü statik olarak yayınlanır. API erişimi olmayan bu sürüm, yerel soru havuzuyla çalışır:
 
-AI değişkenleri tanımlı olmasa bile uygulama doğrulanmış yedek soru havuzuyla çalışır.
+`https://inadinatv.github.io/OyunQiz/`
+
+## Vercel bağlantısı ve AI soruları
+
+Vercel sürümü `/api/question` sunucu fonksiyonunu kullanır. Gerçek zamanlı AI üretimi için Vercel Project Settings > Environment Variables bölümüne `MANUS_API_URL` ve `MANUS_API_KEY` ekleyin. Bu değişkenler GitHub'a eklenmemelidir.
+
+AI değişkenleri tanımlı olmasa bile Vercel sürümü doğrulanmış yedek soru havuzuyla çalışır.

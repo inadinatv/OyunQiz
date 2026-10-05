@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İnadına TV | Dinamik AI Quiz</title>
-    <link rel="icon" href="/inadina-tv-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="./inadina-tv-logo.svg" type="image/svg+xml">
     <!-- Konfeti Efekti İçin CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="./fallback-questions.js"></script>
     <style>
         * {
             margin: 0;
@@ -412,7 +413,7 @@
 <body>
     <div class="container">
         <div class="brand-lockup" aria-label="İnadına TV">
-            <img src="/inadina-tv-logo.svg" alt="İnadına TV logosu">
+            <img src="./inadina-tv-logo.svg" alt="İnadına TV logosu">
             <span>Bilgiyle eğlencenin inadına</span>
         </div>
         <div id="mode-selection" class="mode-selection">
@@ -651,7 +652,21 @@
                 } catch (error) {
                     console.error('Soru üretme hatası:', error);
                     retryCount++;
-                    if (attempt === 2) throw new Error('Soru üretilemedi. Lütfen yeniden deneyin.');
+                    if (attempt === 2) {
+                        const excluded = new Set(Array.from(usedQuestions).map(questionKey));
+                        const candidates = LOCAL_FALLBACK_QUESTIONS.filter(item =>
+                            item.category === currentCategory && item.difficulty === currentDifficulty && !excluded.has(questionKey(item.question))
+                        );
+                        if (candidates.length) {
+                            const local = candidates[Math.floor(Math.random() * candidates.length)];
+                            usedQuestions.add(questionKey(local.question));
+                            aiStatus.textContent = 'GitHub Pages modu: yerel soru havuzu aktif.';
+                            aiStatus.className = 'ai-status fallback';
+                            retryCount = 0;
+                            return { question: local.question, options: local.options, correct: local.correct };
+                        }
+                        throw new Error('Soru üretilemedi. Lütfen yeniden deneyin.');
+                    }
                 }
             }
             throw new Error('Bu tur için yeni soru bulunamadı.');
