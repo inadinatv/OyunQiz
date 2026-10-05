@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">İnadına TV</title>
+  <desc id="desc">Turkuaz ve fuşya renkli televizyon ekranı simgesi ve İnadına TV yazısı</desc>
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16e0c4"/>
+      <stop offset="0.52" stop-color="#667eea"/>
+      <stop offset="1" stop-color="#ff4f91"/>
+    </linearGradient>
+    <linearGradient id="word" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.52" stop-color="#8ef0c2"/>
+      <stop offset="1" stop-color="#ffd166"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g transform="translate(16 18)" filter="url(#glow)">
+    <rect x="10" y="28" width="150" height="104" rx="28" fill="#171438" stroke="url(#screen)" stroke-width="9"/>
+    <rect x="29" y="47" width="112" height="66" rx="14" fill="url(#screen)" opacity=".92"/>
+    <path d="M84 28V8M84 8L60 -8M84 8l25-16" stroke="#8ef0c2" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="84" cy="80" r="15" fill="#fff" opacity=".95"/>
+    <path d="M80 80l10-7v14z" fill="#667eea"/>
+    <circle cx="132" cy="145" r="5" fill="#ffd166"/>
+    <circle cx="148" cy="145" r="5" fill="#ff4f91"/>
+  </g>
+  <text x="198" y="107" fill="url(#word)" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="800" letter-spacing="-1.5">İnadına TV</text>
+  <text x="202" y="142" fill="#ffffff" opacity=".75" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="4">EĞLENCE · BİLGİ · OYUN</text>
+</svg>
